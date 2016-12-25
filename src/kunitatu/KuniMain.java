@@ -8,42 +8,59 @@ public class KuniMain {
 		System.exit(0);
 	}
 
-	private void test01(){
-		int max = 1000000;
-		String a = "a";
-		String b = "b";
-		String c = "c";
-		String d = "d";
-		
-		long time = System.currentTimeMillis();
+	private static final String a = "a";
+	private static final String b = "b";
+	private static final String c = "c";
+	private static final String d = "d";
+	private static final String e = "e";
+	private void test01() {
+		int max = 100000;
+		String str = "";
 		StringBuilder sb = new StringBuilder();
-		for (int i=0; i<max; i++){
-			sb.append(a).append(b).append(c).append(d);
+
+		long time = System.currentTimeMillis();
+		for (int i = 0; i < max; i++) {
+			sb = new StringBuilder();
+			sb.append(a).append(b).append(c).append(d).append(e);
+			str = sb.toString();
 		}
-		log("StringBuilder:" + (System.currentTimeMillis()-time));
-		
+		log("StringBuilder:" + (System.currentTimeMillis() - time));
+
 		time = System.currentTimeMillis();
-		for (int i=0; i<max; i++){
-			String.join(a, b, c, d);
+		for (int i = 0; i < max; i++) {
+			str = String.join(a, b, c, d, e);
 		}
-		log("String.join:" + (System.currentTimeMillis()-time));
-		
+		log("String.join:" + (System.currentTimeMillis() - time));
+
 		time = System.currentTimeMillis();
-		sb = new StringBuilder();
-		for (int i=0; i<max; i++){
-			sb.append(a).append(b).append(c).append(d);
+		for (int i = 0; i < max; i++) {
+			str = a + b + c + d + e;
 		}
-		log("StringBuilder:" + (System.currentTimeMillis()-time));
-		
+		log("String +:" + (System.currentTimeMillis() - time));
+
 		time = System.currentTimeMillis();
-		for (int i=0; i<max; i++){
-			String.join(a, b, c, d);
+		for (int i = 0; i < max; i++) {
+			sb = new StringBuilder();
+			sb.append(a).append(b).append(c).append(d).append(e).append("f").append(String.valueOf(i));
+			str = sb.toString();
 		}
-		log("String.join:" + (System.currentTimeMillis()-time));
-		
+		log("StringBuilder:" + (System.currentTimeMillis() - time));
+
+		time = System.currentTimeMillis();
+		for (int i = 0; i < max; i++) {
+			str = String.join(a, b, c, d, e, "f", String.valueOf(i));
+		}
+		log("String.join:" + (System.currentTimeMillis() - time));
+
+		time = System.currentTimeMillis();
+		for (int i = 0; i < max; i++) {
+			str = a + b + c + d + e + "f" + String.valueOf(i);
+		}
+		log("String +:" + (System.currentTimeMillis() - time));
+
 	}
-	
-	private void log(String msg){
+
+	private void log(String msg) {
 		System.out.println(msg);
 	}
 }
