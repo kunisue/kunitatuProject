@@ -13,8 +13,9 @@ public class KuniMain {
 	private static final String c = "c";
 	private static final String d = "d";
 	private static final String e = "e";
+
 	private void test01() {
-		int max = 200000;
+		int max = 300000;
 		String str = "";
 		StringBuilder sb = new StringBuilder();
 
