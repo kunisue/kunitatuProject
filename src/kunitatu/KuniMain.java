@@ -13,50 +13,54 @@ public class KuniMain {
 	private static final String c = "c";
 	private static final String d = "d";
 	private static final String e = "e";
+//	private String a = "a";
+//	private String b = "b";
+//	private String c = "c";
+//	private String d = "d";
+//	private String e = "e";
+
+	// ï∂éöóÒåãçáë¨ìxí≤ç∏
 	private void test01() {
-		int max = 200000;
+		int max = 300000;
+
+		this.doStringPlus(max);
+		this.doStringJoin(max);
+		this.doStringBuilder(max);
+		this.doStringBuilder(max);
+		this.doStringJoin(max);
+		this.doStringPlus(max);
+	}
+
+	private void doStringBuilder(int max) {
 		String str = "";
 		StringBuilder sb = new StringBuilder();
-
 		long time = System.currentTimeMillis();
 		for (int i = 0; i < max; i++) {
 			sb = new StringBuilder();
-			sb.append(a).append(b).append(c).append(d).append(e);
+			sb.append(a).append(b).append(c).append(d).append(e).append("f").append(String.valueOf(i + max * 2));
 			str = sb.toString();
 		}
-		log("StringBuilder:" + (System.currentTimeMillis() - time));
+		log("doStringBuilder:" + (System.currentTimeMillis() - time));
 
-		time = System.currentTimeMillis();
-		for (int i = 0; i < max; i++) {
-			str = String.join(a, b, c, d, e);
-		}
-		log("String.join:" + (System.currentTimeMillis() - time));
+	}
 
-		time = System.currentTimeMillis();
+	private void doStringJoin(int max) {
+		String str = "";
+		long time = System.currentTimeMillis();
 		for (int i = 0; i < max; i++) {
-			str = a + b + c + d + e;
+			str = String.join(a, b, c, d, e, "g", String.valueOf(i + max * 3));
 		}
-		log("String +:" + (System.currentTimeMillis() - time));
+		log("doStringJoin:" + (System.currentTimeMillis() - time));
 
-		time = System.currentTimeMillis();
-		for (int i = 0; i < max; i++) {
-			sb = new StringBuilder();
-			sb.append(a).append(b).append(c).append(d).append(e).append("f").append(String.valueOf(i));
-			str = sb.toString();
-		}
-		log("StringBuilder:" + (System.currentTimeMillis() - time));
+	}
 
-		time = System.currentTimeMillis();
+	private void doStringPlus(int max) {
+		String str = "";
+		long time = System.currentTimeMillis();
 		for (int i = 0; i < max; i++) {
-			str = String.join(a, b, c, d, e, "f", String.valueOf(i));
+			str = a + b + c + d + e + "h" + String.valueOf(i + max * 4);
 		}
-		log("String.join:" + (System.currentTimeMillis() - time));
-
-		time = System.currentTimeMillis();
-		for (int i = 0; i < max; i++) {
-			str = a + b + c + d + e + "f" + String.valueOf(i);
-		}
-		log("String +:" + (System.currentTimeMillis() - time));
+		log("doStringPlus:" + (System.currentTimeMillis() - time));
 
 	}
 
