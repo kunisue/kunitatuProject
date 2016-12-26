@@ -8,56 +8,55 @@ public class KuniMain {
 		System.exit(0);
 	}
 
-	private static final String a = "a";
-	private static final String b = "b";
-	private static final String c = "c";
-	private static final String d = "d";
-	private static final String e = "e";
+	// private static final String a = "a";
+	// private static final String b = "b";
+	// private static final String c = "c";
+	// private static final String d = "d";
+	// private static final String e = "e";
+	private String a = "a";
+	private String b = "b";
+	private String c = "c";
+	private String d = "d";
+	private String e = "e";
 
 	private void test01() {
 		int max = 300000;
+
+		this.doStringPlus(max);
+		this.doStringJoin(max);
+		this.doStringBuilder(max);
+	}
+
+	private void doStringBuilder(int max) {
 		String str = "";
 		StringBuilder sb = new StringBuilder();
-
 		long time = System.currentTimeMillis();
-		for (int i = 0; i < max; i++) {
-			sb = new StringBuilder();
-			sb.append(a).append(b).append(c).append(d).append(e);
-			str = sb.toString();
-		}
-		log("StringBuilder:" + (System.currentTimeMillis() - time));
-
-		time = System.currentTimeMillis();
-		for (int i = 0; i < max; i++) {
-			str = String.join(a, b, c, d, e);
-		}
-		log("String.join:" + (System.currentTimeMillis() - time));
-
-		time = System.currentTimeMillis();
-		for (int i = 0; i < max; i++) {
-			str = a + b + c + d + e;
-		}
-		log("String +:" + (System.currentTimeMillis() - time));
-
-		time = System.currentTimeMillis();
 		for (int i = 0; i < max; i++) {
 			sb = new StringBuilder();
 			sb.append(a).append(b).append(c).append(d).append(e).append("f").append(String.valueOf(i));
 			str = sb.toString();
 		}
-		log("StringBuilder:" + (System.currentTimeMillis() - time));
+		log("doStringBuilder:" + (System.currentTimeMillis() - time));
 
-		time = System.currentTimeMillis();
+	}
+
+	private void doStringJoin(int max) {
+		String str = "";
+		long time = System.currentTimeMillis();
 		for (int i = 0; i < max; i++) {
 			str = String.join(a, b, c, d, e, "f", String.valueOf(i));
 		}
-		log("String.join:" + (System.currentTimeMillis() - time));
+		log("doStringJoin:" + (System.currentTimeMillis() - time));
 
-		time = System.currentTimeMillis();
+	}
+
+	private void doStringPlus(int max) {
+		String str = "";
+		long time = System.currentTimeMillis();
 		for (int i = 0; i < max; i++) {
 			str = a + b + c + d + e + "f" + String.valueOf(i);
 		}
-		log("String +:" + (System.currentTimeMillis() - time));
+		log("doStringPlus:" + (System.currentTimeMillis() - time));
 
 	}
 
